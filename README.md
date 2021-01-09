@@ -9,6 +9,8 @@ FFS organizes files into chunks. A chunk can either contain other defined chunks
 An example of the ELF header format:
 ```
 ELF_HEADER:
+    // set endianness to big
+    ! ENDIAN(BE)
 
     RAW_BYTE(4)      signature (7F 45 4C 46)  //  0x7F ELF,
                                 /* basic type variable declaration */
