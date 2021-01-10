@@ -69,7 +69,6 @@ main_chunk:
 ## Chunk Arrays
 It is common for the field of a chunk to contain a variable number of another type of chunk within it. As long as the number of elements in the array is defined somewhere within the spec, ffs can handle it with the following syntax:
 ```
-
 main_chunk:
     int8                        num_entries
     $other_chunk[$num_entries]  other_chunks
