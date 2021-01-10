@@ -35,7 +35,7 @@ ELF_HEADER:
 
 
 ## Types
-Types can be user-defined or built-in. Built in types include primitive C types, as well as other common aliases for types. For unusually sized types that will be used only once, struct packing codes can be used in place of a type name to define the size. Types can also be defined by type variables.
+Types can be user-defined or built-in. Built in types include primitive C types, as well as other common aliases for types. For unusually sized types that will be used only once, python struct packing codes can be used in place of a type name to define the size. Types can also be defined by type variables.
 
 ## Type Aliases
 Aliases can be used to refer to an existing type with a user-defined name. Aliases are useful for matching up types defined in code for a file format parser up to a file format specification.
@@ -44,7 +44,7 @@ typealias MyHeader uint32
 ```
 
 ## Defining Types
-Types can be defined by using C struct packing codes, however this invalidates the new type name as a potential candidate for field names:
+Types can be defined by using python struct packing codes, however this invalidates the new type name as a potential candidate for field names:
 ```
 typedef ten_bytes 10B
 ```
