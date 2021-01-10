@@ -1,0 +1,7 @@
+main_chunk:
+    int8                        num_entries
+    $other_chunk[$num_entries]  other_chunks
+
+other_chunk:
+    int16     some_field
+    uint32    some_other_field
