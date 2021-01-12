@@ -94,18 +94,26 @@ data_chunk:
     int     some_field
 ```
 
-## Bitfields
-Bitfields can be declared by adding the `BITFIELD` modifier to a chunk.
+## Bitfields and Enums
+Bitfields can be declared by adding the `BITFIELD` modifier to a chunk, however all bitfields must be declared as a multiple of 8, as alternative byte sizes are not supported. Additionally, enums may optionally be defined to support bitfields either inline or globally. Enums do not need to handle every single possibility for a field.
 ```
 main_chunk:
     $bitfield1_chunk         bitfield1
 
+bitfield1_type_enum:
+    ! ENUM(32)   // specifies that this chunk defines an enum with 32 different possibilities
+    TYPE_A(4)    // TYPE_A will hold the value 4
+    TYPE_B(7)
+    TYPE_C(6)
+
+
 bitfield1_chunk:
     ! BITFIELD(8)  // designate this chunk as a bitfield with 8 bits
 
-    BITS(5)               type  // a type defined by the file format
+    BITS(5)               type ! ENUM($bitfield1_type_enum) // types will be referencing the enum 'bitfield1_type_enum'
     BIT                   is_child
-    BITS(2)               something
+    BITS(2)               something  ! ENUM((SOMETHING_1, 01), (SOMETHING_2, 02))  // inline enum declaration
+
 
 ```
 
