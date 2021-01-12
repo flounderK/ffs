@@ -94,4 +94,21 @@ data_chunk:
     int     some_field
 ```
 
+## Bitfields
+Bitfields can be declared by adding the `BITFIELD` modifier to a chunk.
+```
+main_chunk:
+    $bitfield1_chunk         bitfield1
+
+bitfield1_chunk:
+    ! BITFIELD(8)  // designate this chunk as a bitfield with 8 bits
+
+    BITS(5)               type  // a type defined by the file format
+    BIT                   is_child
+    BITS(2)               something
+
+```
+
+
+
 
