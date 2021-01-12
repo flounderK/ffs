@@ -1,5 +1,6 @@
 
 import re
+import struct
 
 
 class Parser:
@@ -11,8 +12,8 @@ class Parser:
     CHUNK_NAME_REXP = re.compile(r'(^[a-zA-Z_][a-zA-Z0-9_]*(?=:))', re.MULTILINE)
     FIELD_NAME_REXP = re.compile(r'([$]*[a-zA-Z_][a-zA-Z0-9_]*)')
 
-    def __init__(self, source):
-        self.source = source
+    def __init__(self):
+        pass
 
     def _strip_comments(self, source):
         # strip single line comments
@@ -44,12 +45,27 @@ class Parser:
 
         return chunks_source
 
-    def parse(self):
+    def parse(self, text):
+
         # this copy will be torn up a bit
-        working_src = self.source
+        working_src = text
 
         working_src = self._strip_comments(working_src)
 
+
+class Type:
+
+    def __init__(self, name, bitsize):
+        self.name = name
+        self.bitsize = bitsize
+
+
+class Field:
+
+    def __init__(self, name, type, endian='big'):
+        self.name = name
+        self.type = type
+        self.endian = endian
 
 
 
